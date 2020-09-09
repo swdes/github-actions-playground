@@ -1,26 +1,18 @@
-# This is a basic workflow that is manually triggered
-
 name: Request a deployment
 
-# Controls when the action will run. Workflow runs when manually triggered using the UI
-# or API.
 on:
   workflow_dispatch:
-    # Inputs the workflow accepts.
     inputs:
       env:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'Deploy on which environment: rct, preprod or prod'
-        # Default value if no value is explicitly provided
+        description: 'rct, preprod or prod'
         default: 'rct'
-        # Input has to be provided for the workflow to run
         required: true
       service:
-        description: 'Which service do you want to deploy? all, user, gateway, dictionary'
+        description: 'all, user, gateway, dictionary'
         required: true
         default: 'all'
       ref:
-        description: 'Dockerhub image reference. Ex: gutenbergtech/distribution-backend:user-5934baa'
+        description: 'branch or release to deploy'
         required: true
 
 jobs:

@@ -32,6 +32,6 @@ jobs:
         id: deployment
         with:
           token: "${{ github.token }}"
-          target_url: ${{ inputs.service }}
-          environment: ${{ inputs.env }}
-          ref: ${{ inputs.ref }}
+          target_url: ${{ github.event.inputs.service }}
+          environment: ${{ github.event.inputs.env }}
+          ref: ${{ github.event.inputs.ref }}

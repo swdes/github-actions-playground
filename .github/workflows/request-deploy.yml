@@ -27,11 +27,11 @@ jobs:
   request-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: chrnorm/deployment-action@releases/v1
-        name: Create GitHub deployment
-        id: deployment
+      - uses: avakar/create-deployment@v1
         with:
-          token: "${{ github.token }}"
-          target_url: ${{ github.event.inputs.service }}
+          auto_merge: false
           environment: ${{ github.event.inputs.env }}
           ref: ${{ github.event.inputs.ref }}
+          payload: '{ "service": "${{ github.event.inputs.service }}"}'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
